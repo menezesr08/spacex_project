@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spacex_project/UI/launch_data.dart';
-import 'package:spacex_project/UI/launch_page.dart';
+import 'package:spacex_project/UI/launches_data.dart';
+import 'package:spacex_project/UI/launches_page.dart';
 
 void main() {
   runApp(const MyApp());
