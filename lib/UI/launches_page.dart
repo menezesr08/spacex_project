@@ -1,6 +1,8 @@
+import 'package:date_count_down/date_count_down.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spacex_project/UI/launch_data.dart';
+import 'package:spacex_project/UI/launches_data.dart';
+import 'package:spacex_project/UI/widgets/launches_data_row.dart';
 import 'package:spacex_project/models/launch.dart';
 
 class LaunchesPage extends StatelessWidget {
@@ -39,36 +41,11 @@ class LaunchesPage extends StatelessWidget {
                     : ListView.builder(
                         itemCount: value.data.length,
                         itemBuilder: (context, index) {
-                          return LauchDataRow(
+                          return LaunchesDataRow(
                             data: value.data[index],
                           );
                         });
           }),
-        ),
-      ),
-    );
-  }
-}
-
-class LauchDataRow extends StatelessWidget {
-  const LauchDataRow({Key? key, required this.data}) : super(key: key);
-  final Launch data;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.network(
-              data.patch.small ??
-                  'https://studentwork.prattsi.org/infovis/wp-content/uploads/sites/3/2021/02/spacex-tesmanian_1600x.jpg',
-            ),
-            Text('Mission: ${data.mission.name}'),
-            Text('Rocket: ${data.mission.rocket}'),
-          ],
         ),
       ),
     );
