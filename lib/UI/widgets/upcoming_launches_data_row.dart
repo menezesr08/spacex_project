@@ -1,16 +1,19 @@
 import 'package:date_count_down/date_count_down.dart';
 import 'package:flutter/material.dart';
+import 'package:spacex_project/UI/screens/upcoming_launches_detail_view.dart';
 import 'package:spacex_project/models/launch.dart';
 
-class LaunchesDataRow extends StatefulWidget {
-  const LaunchesDataRow({Key? key, required this.data}) : super(key: key);
+class UpcomingLaunchesDataRow extends StatefulWidget {
+  const UpcomingLaunchesDataRow({Key? key, required this.data})
+      : super(key: key);
   final Launch data;
 
   @override
-  State<LaunchesDataRow> createState() => _LaunchesDataRowState();
+  State<UpcomingLaunchesDataRow> createState() =>
+      _UpcomingLaunchesDataRowState();
 }
 
-class _LaunchesDataRowState extends State<LaunchesDataRow> {
+class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -36,7 +39,10 @@ class _LaunchesDataRowState extends State<LaunchesDataRow> {
               minutesTextLong: " MINUTES ",
               secondsTextLong: " SECONDS ",
               style: TextStyle(color: Colors.blue),
-            )
+            ),
+            widget.data.isFavourite
+                ? Icon(Icons.favorite)
+                : Icon(Icons.favorite_border),
           ],
         ),
       ),
