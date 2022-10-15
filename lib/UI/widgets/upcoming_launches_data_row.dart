@@ -17,35 +17,78 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.network(
-              widget.data.patch.small ??
-                  'https://studentwork.prattsi.org/infovis/wp-content/uploads/sites/3/2021/02/spacex-tesmanian_1600x.jpg',
-            ),
-            Text('Mission: ${widget.data.mission.name}'),
-            Text('Rocket: ${widget.data.mission.rocket}'),
-            CountDownText(
-              due: DateTime.parse(widget.data.mission.launchDate!),
-              finishedText: "Done",
-              showLabel: true,
-              longDateName: true,
-              daysTextLong: " DAYS ",
-              hoursTextLong: " HOURS ",
-              minutesTextLong: " MINUTES ",
-              secondsTextLong: " SECONDS ",
-              style: TextStyle(color: Colors.blue),
-            ),
-            widget.data.isFavourite
-                ? Icon(Icons.favorite)
-                : Icon(Icons.favorite_border),
-          ],
-        ),
-      ),
+      elevation: 50,
+      shadowColor: Colors.black,
+      color: Colors.greenAccent[100],
+      child: SizedBox(
+        width: 300,
+        height: 420,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.green[500],
+                radius: 108,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    widget.data.patch.small ??
+                        'https://i.redd.it/exmspx2e5iz61.png',
+                  ), //NetworkImage
+                  radius: 100,
+                ), //CircleAvatar
+              ), //CircleAvatar
+              const SizedBox(
+                height: 10,
+              ), //SizedBox
+              Text(
+                'Mission: ${widget.data.mission.name}',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.green[900],
+                  fontWeight: FontWeight.w500,
+                ), //Textstyle
+              ), //Text
+              const SizedBox(
+                height: 10,
+              ), //SizedBox
+              Text(
+                'Rocket: ${widget.data.mission.rocket}',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.green,
+                ), //Textstyle
+              ), //Text
+              const SizedBox(
+                height: 10,
+              ),
+              const Text('Launching in...',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+              CountDownText(
+                due: DateTime.parse(widget.data.mission.launchDate!),
+                finishedText: "Done",
+                showLabel: true,
+                longDateName: true,
+                daysTextLong: " DAYS ",
+                hoursTextLong: " HOURS ",
+                minutesTextLong: " MINUTES ",
+                secondsTextLong: " SECONDS ",
+                style: TextStyle(color: Colors.blue),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              widget.data.isFavourite
+                  ? Icon(Icons.favorite)
+                  : Icon(Icons.favorite_border), //SizedBox
+
+            ],
+          ), //Column
+        ), //Padding
+      ), //SizedBox
     );
   }
 }
