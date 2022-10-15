@@ -10,7 +10,7 @@ Future<List<Launch?>> getLaunchData() async {
   List<Launch?> result = [];
 
   try {
-    final response = await http.get(Uri.parse(spacexApiUrl), headers: {
+    final response = await http.get(Uri.parse(getAllLaunchesUrl), headers: {
       HttpHeaders.contentTypeHeader: "application/json",
     });
     if (response.statusCode == 200) {
