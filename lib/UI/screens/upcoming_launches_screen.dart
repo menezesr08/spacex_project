@@ -50,7 +50,8 @@ class UpcomingLaunchesScreen extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         UpcomingLaunchesDetailView(
-                                            id:value.upcomingLaunches[index].mission.id!)),
+                                            id: value.upcomingLaunches[index]
+                                                .mission.id!)),
                               );
                             },
                             child: UpcomingLaunchesDataRow(
