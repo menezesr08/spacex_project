@@ -16,6 +16,7 @@ class UpcomingLaunchesData extends ChangeNotifier {
   bool get error => _error;
   String get errorMessage => _errorMessage;
 
+  // Gets data from the spaceX v4 api endpoint: /launches/upcoming
   Future<void> get fetchUpcomingLaunchesData async {
     final response = await http.get(Uri.parse(getAllLaunchesUrl), headers: {
       HttpHeaders.contentTypeHeader: "application/json",
@@ -30,12 +31,11 @@ class UpcomingLaunchesData extends ChangeNotifier {
         // Sort in ascending order - soonest at the top
         upcomingLaunches.sort((a, b) => DateTime.parse(a.mission.launchDate!)
             .compareTo(DateTime.parse(b.mission.launchDate!)));
-        print(upcomingLaunches.length);
+        // Filter for launches after DateTime.now - remove redundant data
         upcomingLaunches = upcomingLaunches
             .where((element) => DateTime.parse(element.mission.launchDate!)
                 .isAfter(DateTime.now()))
             .toList();
-        print(upcomingLaunches.length);
 
         _error = false;
       } catch (e) {
@@ -49,7 +49,7 @@ class UpcomingLaunchesData extends ChangeNotifier {
     }
     notifyListeners();
   }
-
+  // Gets data from the spaceX v4 api endpoint: launches/{id}
   Future<void> fetchUpcomingLaunchDetail(String id) async {
     final response =
         await http.get(Uri.parse(getSingleLaunchUrl + id), headers: {
@@ -79,6 +79,7 @@ class UpcomingLaunchesData extends ChangeNotifier {
 
   Future<void> favouriteUpcomingLaunch(Launch selectedLaunch) async {
     selectedLaunch.isFavourite = !selectedLaunch.isFavourite;
+    // Favourite the upcoming launch on the main screen 
     Launch selectedUpcomingLaunch = upcomingLaunches.firstWhere(
         (element) => element.mission.id == selectedLaunch.mission.id);
     selectedUpcomingLaunch.isFavourite = !selectedUpcomingLaunch.isFavourite;
