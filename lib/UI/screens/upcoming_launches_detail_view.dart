@@ -26,19 +26,12 @@ class UpcomingLaunchesDetailView extends StatelessWidget {
           child: Consumer<UpcomingLaunchesData>(
             builder: (context, value, child) {
               return value.upcomingLaunch == null && !value.error
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : value.error
                       ? Text(
                           value.errorMessage,
                           textAlign: TextAlign.center,
                         )
-                      // : Column(
-                      //     children: [
-                      //       Text(value.upcomingLaunch!.mission.name!),
-                      //       Text(value.upcomingLaunch!.mission.rocket!),
-
-                      //     ],
-                      //   );
                       : Card(
                           elevation: 50,
                           shadowColor: Colors.black,
@@ -66,7 +59,7 @@ class UpcomingLaunchesDetailView extends StatelessWidget {
                                   ), //SizedBox
                                   Text(
                                     'Mission: ${value.upcomingLaunch!.mission.name}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500,
@@ -90,7 +83,7 @@ class UpcomingLaunchesDetailView extends StatelessWidget {
                                   value.upcomingLaunch!.mission.youtubeId !=
                                           null
                                       ? ElevatedButton.icon(
-                                          icon: Icon(Icons.web),
+                                          icon: const Icon(Icons.web),
                                           onPressed: () {
                                             _launchUrl(value.upcomingLaunch!
                                                 .mission.youtubeId!);
@@ -109,13 +102,13 @@ class UpcomingLaunchesDetailView extends StatelessWidget {
                                                 value.upcomingLaunch!);
                                       },
                                       icon: value.upcomingLaunch!.isFavourite
-                                          ? Icon(
+                                          ? const Icon(
                                               Icons.favorite,
                                               size: 30,
                                               color: Color.fromARGB(
                                                   255, 154, 23, 14),
                                             )
-                                          : Icon(
+                                          : const Icon(
                                               Icons.favorite_border,
                                               size: 30,
                                               color: Color.fromARGB(

@@ -1,6 +1,5 @@
 import 'package:date_count_down/date_count_down.dart';
 import 'package:flutter/material.dart';
-import 'package:spacex_project/UI/screens/upcoming_launches_detail_view.dart';
 import 'package:spacex_project/models/launch.dart';
 
 class UpcomingLaunchesDataRow extends StatefulWidget {
@@ -43,7 +42,7 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
               ), //SizedBox
               Text(
                 'Mission: ${widget.data.mission.name}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
@@ -86,8 +85,8 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
                 height: 10,
               ),
               widget.data.isFavourite
-                  ? Icon(Icons.favorite)
-                  : Icon(Icons.favorite_border), //SizedBox
+                  ? const Icon(Icons.favorite)
+                  : const Icon(Icons.favorite_border), //SizedBox
             ],
           ), //Column
         ), //Padding
