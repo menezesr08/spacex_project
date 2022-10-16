@@ -19,10 +19,10 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
     return Card(
       elevation: 50,
       shadowColor: Colors.black,
-      color: Colors.greenAccent[100],
+      color: Colors.black12,
       child: SizedBox(
         width: 300,
-        height: 420,
+        height: 440,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -45,7 +45,7 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
                 'Mission: ${widget.data.mission.name}',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.green[900],
+                  color: Colors.black,
                   fontWeight: FontWeight.w500,
                 ), //Textstyle
               ), //Text
@@ -55,12 +55,13 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
               Text(
                 'Rocket: ${widget.data.mission.rocket}',
                 style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.green,
-                ), //Textstyle
+                    fontSize: 15,
+                    color: Colors.red[900],
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500), //Textstyle
               ), //Text
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               const Text('Launching in...',
                   style: TextStyle(
@@ -76,7 +77,10 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
                 hoursTextLong: " HOURS ",
                 minutesTextLong: " MINUTES ",
                 secondsTextLong: " SECONDS ",
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                  color: Colors.red[900],
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -84,7 +88,6 @@ class _UpcomingLaunchesDataRowState extends State<UpcomingLaunchesDataRow> {
               widget.data.isFavourite
                   ? Icon(Icons.favorite)
                   : Icon(Icons.favorite_border), //SizedBox
-
             ],
           ), //Column
         ), //Padding
