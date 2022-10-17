@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class CountDownTimer extends StatefulWidget {
   const CountDownTimer({Key? key, required this.launchDate}) : super(key: key);
@@ -13,7 +11,7 @@ class CountDownTimer extends StatefulWidget {
 }
 
 class _CountDownTimerState extends State<CountDownTimer> {
-  // Step 2
+
   Timer? countdownTimer;
   late Duration myDuration = widget.launchDate.difference(DateTime.now());
   @override
@@ -22,27 +20,26 @@ class _CountDownTimerState extends State<CountDownTimer> {
     startTimer();
   }
 
-  /// Timer related methods ///
-  // Step 3
+
   void startTimer() {
     countdownTimer =
-        Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
+        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
-  // Step 4
+
   void stopTimer() {
     setState(() => countdownTimer!.cancel());
   }
 
-  // Step 5
+
   void resetTimer() {
     stopTimer();
-    setState(() => myDuration = Duration(days: 5));
+    setState(() => myDuration = const Duration(days: 5));
   }
 
   // Step 6
   void setCountDown() {
-    final reduceSecondsBy = 1;
+    const reduceSecondsBy = 1;
     setState(() {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
@@ -64,7 +61,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
     return Center(
       child: Column(
         children: [
-          Text(
+          const Text(
             'DAYS: HRS: MINS: SECS',
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
@@ -72,7 +69,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
           // Step 8
           Text(
             '$days:$hours:$minutes:$seconds',
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.black, fontSize: 30),
           ),
           // Step
