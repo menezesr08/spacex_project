@@ -9,7 +9,7 @@ class UpcomingLaunchesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData;
+    context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -19,14 +19,14 @@ class UpcomingLaunchesScreen extends StatelessWidget {
           IconButton(
               onPressed: () {
                 context.read<UpcomingLaunchesData>().initialValues();
-                context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData;
+                context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData();
               },
               icon: const Icon(Icons.refresh))
         ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          await context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData;
+          await context.read<UpcomingLaunchesData>().fetchUpcomingLaunchesData();
         },
         child: Center(
           child:

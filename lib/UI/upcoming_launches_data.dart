@@ -17,7 +17,7 @@ class UpcomingLaunchesData extends ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   // Gets data from the spaceX v4 api endpoint: /launches/upcoming
-  Future<void> get fetchUpcomingLaunchesData async {
+  Future<void> fetchUpcomingLaunchesData() async {
     final response = await http.get(Uri.parse(getAllLaunchesUrl), headers: {
       HttpHeaders.contentTypeHeader: "application/json",
     });
